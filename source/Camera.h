@@ -27,7 +27,7 @@ class Camera
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
-		Camera(void) : mViewIsUptodate(false), mProjIsUptodate(false), start(Vector3f::Zero()), delta(Vector3f::Zero())
+		Camera(void) : start(Vector3f::Zero()), delta(Vector3f::Zero()), mViewIsUptodate(false), mProjIsUptodate(false)
     {
 		mProjectionMatrix.setIdentity();
 		mViewMatrix.setIdentity();

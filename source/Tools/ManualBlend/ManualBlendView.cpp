@@ -104,7 +104,8 @@ void ManualBlendView::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
 		{
 			if (!cloudPoints.empty())
 			{
-				glwidget->glPointSize(8);
+				// XXX Fix
+				// glwidget->glPointSize(8);
 				glwidget->drawOrientedPoints(cloudPoints, cloudNormals, cloudColor, cameraMatrix);
 			}
 		}

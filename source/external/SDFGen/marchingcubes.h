@@ -30,10 +30,13 @@ inline ScalarVolume addPaddingToVolume( const ScalarVolume & fromVolume, float v
 	size_t gridsize = fromVolume.size();
 	ScalarVolume volume = initScalarVolume( gridsize, value );
 	#pragma omp parallel for
-	for(int x = 0; x < gridsize; x++)
-		for(int y = 0; y < gridsize; y++)
-			for(int z = 0; z < gridsize; z++)
+	for(size_t x = 0; x < gridsize; x++) {
+		for(size_t y = 0; y < gridsize; y++) {
+			for(size_t z = 0; z < gridsize; z++) {
 				volume[x+MC_VOLUME_PADDING][y+MC_VOLUME_PADDING][z+MC_VOLUME_PADDING] = fromVolume[x][y][z];
+		    }
+		}
+    }
 	return volume;
 }
 

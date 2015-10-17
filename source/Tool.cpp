@@ -1,7 +1,7 @@
 #include "Tool.h"
 #include <QGraphicsScene>
 
-Tool::Tool(Document *document) : document(document), isShowBorder(false)
+Tool::Tool(Document *document) :  isShowBorder(false), document(document)
 {
     this->setAcceptHoverEvents(true);
     //this->setFlags( QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable );

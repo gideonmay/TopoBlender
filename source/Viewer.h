@@ -1,16 +1,20 @@
 #pragma once
 
 #include <QOpenGLWidget>
-#include <QOpenGLFunctions_3_2_Core>
+#include <QOpenGLFunctions>
+// #include <QOpenGLFunctions_3_2_Core>
+// #include <QOpenGLFunctions_4_3_Core>
 #include <QOpenGLShaderProgram>
 #include <QVector3D>
 #include <QMatrix4x4>
 
-class Viewer : public QOpenGLWidget, public QOpenGLFunctions_3_2_Core
+// class Viewer : public QOpenGLWidget
+// class Viewer : public QOpenGLWidget, public QOpenGLFunctions_3_2_Core
+class Viewer : public QOpenGLWidget, public QOpenGLFunctions
 {
 public:
     Viewer();
-    void initializeGL();
+    virtual void initializeGL() override;
 
     QMap<QString, QOpenGLShaderProgram*> shaders;
 

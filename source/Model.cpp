@@ -422,7 +422,7 @@ void Model::draw(Viewer *glwidget)
                 auto nodeColor = n->vis_property["color"].value<QColor>();
                 QVector<QVector3D> lines;
                 auto points = n->controlPoints();
-                for(int i = 1; i < points.size(); i++){
+                for(size_t i = 1; i < points.size(); i++){
                     lines << QVector3D(points[i-1][0],points[i-1][1],points[i-1][2]);
                     lines << QVector3D(points[i][0],points[i][1],points[i][2]);
                 }

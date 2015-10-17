@@ -20,8 +20,8 @@
 static Eigen::Vector3f toVector3(QVector3D p){ return Eigen::Vector3f(p[0], p[1], p[2]); }
 
 SketchView::SketchView(Document * document, QGraphicsItem *parent, SketchViewType type) :
-QGraphicsObject(parent), rect(QRect(0, 0, 100, 100)), type(type), camera(nullptr), trackball(nullptr),
-leftButtonDown(false), rightButtonDown(false), middleButtonDown(false), document(document), sketchOp(SKETCH_NONE)
+QGraphicsObject(parent), type(type), rect(QRect(0, 0, 100, 100)), camera(nullptr), trackball(nullptr),
+leftButtonDown(false), rightButtonDown(false), document(document), middleButtonDown(false), sketchOp(SKETCH_NONE)
 {
     // Enable keyboard
     this->setFlags(QGraphicsItem::ItemIsFocusable);
@@ -208,7 +208,8 @@ void SketchView::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
 		// Draw debug elements
 		if (!dbg_points.empty() || !dbg_lines.empty())
 		{
-			glwidget->glPointSize(6);
+			// XXX Fix Gideon
+			// glwidget->glPointSize(6);
 			glwidget->drawPoints(dbg_points, Qt::red, cameraMatrix);
 			glwidget->drawPoints(dbg_points2, Qt::green, cameraMatrix);
 			

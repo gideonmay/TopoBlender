@@ -138,7 +138,7 @@ static inline QVector<QVector3D> smooth(QVector<QVector3D> points, int num_iter 
     for (int k = 0; k < num_iter; ++k) {
         auto points_old = points;
         for (int i = 0; i < size; ++i) {
-            if (!is_loop && i == 0 || i == size - 1)
+            if ((!is_loop && i == 0) || (i == size - 1))
                 continue;
 
             int i_next  = (i + 1) % size;
@@ -154,7 +154,7 @@ static inline QVector<QVector3D> smooth(QVector<QVector3D> points, int num_iter 
             auto p_first_order  = (p_prev + p_next) / 2.0;
             auto p_second_order = (-p_prev2 + 4.0 * p_prev + 4.0 * p_next - p_next2) / 6.0;
 
-            if (!is_loop && i == 1 || i == size - 2)
+            if ((!is_loop && i == 1) || (i == size - 2))
                 p_second_order = p_first_order;  // undefined
 
             auto p_target = (weight_first_order * p_first_order +

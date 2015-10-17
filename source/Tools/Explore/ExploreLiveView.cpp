@@ -92,7 +92,8 @@ void ExploreLiveView::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
             glwidget->glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             glwidget->glViewport(0, 0, cacheImageSize*1.5, cacheImageSize);
 
-            glwidget->glPointSize(10);
+	// XXX Fix
+            // glwidget->glPointSize(10);	
 
             // Draw aux meshes
             for (auto mesh : meshes)
@@ -151,7 +152,8 @@ void ExploreLiveView::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
 
             glwidget->glClear(GL_DEPTH_BUFFER_BIT);
 
-            glwidget->glPointSize(2);
+	// FIX  XXX
+            // glwidget->glPointSize(2);
 
             // Draw aux meshes
             for (auto mesh : meshes)

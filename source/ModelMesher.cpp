@@ -46,7 +46,7 @@ void ModelMesher::generateOffsetSurface(double offset)
 
         int vi = 0;
 
-        for(size_t i = 1; i < cpts.size(); i++){
+        for(int i = 1; i < cpts.size(); i++){
             SDFGen::Vec3f p0 (cpts[i-1][0],cpts[i-1][1],cpts[i-1][2]);
             SDFGen::Vec3f p1 (cpts[i][0],cpts[i][1],cpts[i][2]);
             SDFGen::Vec3f p2 = (p0 + p1) * 0.5;
@@ -112,9 +112,9 @@ void ModelMesher::generateOffsetSurface(double offset)
 
     ScalarVolume volume = initScalarVolume(sizes[0], sizes[1], sizes[2], (sizes[0] + sizes[1] + sizes[2])*dx);
 
-    for(int i = 0; i < sizes[0]; i++){
-        for(int j = 0; j < sizes[1]; j++){
-            for(int k = 0; k < sizes[2]; k++){
+    for(size_t i = 0; i < sizes[0]; i++){
+        for(size_t j = 0; j < sizes[1]; j++){
+            for(size_t k = 0; k < sizes[2]; k++){
                 volume[k][j][i] = phi_grid(i,j,k);
             }
         }

@@ -1,9 +1,11 @@
+#include <cmath>
 #include "Viewer.h"
 
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
 
 #include <QPainter>
+#include <QGLFormat>
 
 Viewer::Viewer()
 {
@@ -12,10 +14,16 @@ Viewer::Viewer()
     setFormat(format);
 
     setMouseTracking(true);
+
 }
 
 void Viewer::initializeGL()
 {
+    QGLFormat qglFormat;
+    qglFormat.setVersion(3, 2);
+    qglFormat.setProfile(QGLFormat::CoreProfile);
+    QGLFormat::setDefaultFormat(qglFormat);
+
     initializeOpenGLFunctions();
 
     /// Antialiasing and alpha blending:
@@ -518,8 +526,8 @@ void Viewer::drawPlane(QVector3D normal, QVector3D origin, QMatrix4x4 camera)
 
     // Compute two arbitrary othogonal vectors
     auto orthogonalVector = [](const QVector3D& n) {
-        if ((abs(n.y()) >= 0.9 * abs(n.x())) && abs(n.z()) >= 0.9 * abs(n.x())) return QVector3D(0.0, -n.z(), n.y());
-        else if ( abs(n.x()) >= 0.9 * abs(n.y()) && abs(n.z()) >= 0.9 * abs(n.y()) ) return QVector3D(-n.z(), 0.0, n.x());
+        if ((std::abs(n.y()) >= 0.9 * std::abs(n.x())) && std::abs(n.z()) >= 0.9 * std::abs(n.x())) return QVector3D(0.0, -n.z(), n.y());
+        else if ( std::abs(n.x()) >= 0.9 * std::abs(n.y()) && std::abs(n.z()) >= 0.9 * std::abs(n.y()) ) return QVector3D(-n.z(), 0.0, n.x());
         else return QVector3D(-n.y(), n.x(), 0.0);
     };
     auto u = orthogonalVector(normal);
