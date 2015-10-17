@@ -1,3 +1,4 @@
+#include <cmath>
 #include "Explore.h"
 #include "ui_Explore.h"
 

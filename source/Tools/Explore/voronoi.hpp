@@ -730,20 +730,6 @@ namespace cinekine
         float _yBound;
     };
 
-	static Sites lloyd_relax(Sites sites, float boundX, float boundY, int num_iterations = 10)
-	{
-		auto curSites = sites;
-		for (int i = 0; i < num_iterations; i++){
-			voronoi::Graph graph = voronoi::build(std::move(curSites), boundX, boundY);
-			curSites.clear();
-			for (size_t c = 0; c < graph.sites().size(); c++){
-                auto centroid = graph.cellCentroid((int)c);
-				curSites.push_back(Vertex(centroid.x, centroid.y));
-			}
-		}
-		return curSites;
-	}
-
     ///////////////////////////////////////////////////////////////////////
 
     struct BeachArc;
@@ -846,6 +832,20 @@ namespace cinekine
     //  Builds a graph given a collection of sites and a bounding box
     //  
     Graph build(Sites&& sites, float xBound, float yBound);
+
+	static Sites lloyd_relax(Sites sites, float boundX, float boundY, int num_iterations = 10)
+	{
+		auto curSites = sites;
+		for (int i = 0; i < num_iterations; i++){
+			voronoi::Graph graph = voronoi::build(std::move(curSites), boundX, boundY);
+			curSites.clear();
+			for (size_t c = 0; c < graph.sites().size(); c++){
+                auto centroid = graph.cellCentroid((int)c);
+				curSites.push_back(Vertex(centroid.x, centroid.y));
+			}
+		}
+		return curSites;
+	}
 
     }   // namespace voronoi
 }   // namespace cinekine

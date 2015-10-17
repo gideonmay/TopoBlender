@@ -11,9 +11,9 @@ template <class SurfaceMeshModel>
 static inline PQPTrianglesType makeModelPQP( SurfaceMeshModel * m ){
     PQPTrianglesType triangles;
     if(m == nullptr) return triangles;
-    for(auto & f : m->faces()){
+    for(const auto & f : m->faces()){
         PQPTriangleType tri;
-        for(auto & v : m->vertices(f)){
+        for(const auto & v : m->vertices(f)){
             PQPPointType point;
             for(int i = 0; i < 3; i++) point.push_back( m->vertex_coordinates()[v][i] );
             tri.push_back(point);
@@ -37,7 +37,7 @@ struct IntersectResult{
         }
     }
     PQP_REAL p[3], q[3];
-    bool operator<(const IntersectResult& rhs) { return distance < rhs.distance; }
+    bool operator<(const IntersectResult& rhs) const { return distance < rhs.distance; }
 };
 
 struct Manager{

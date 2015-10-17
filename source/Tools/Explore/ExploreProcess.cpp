@@ -19,6 +19,9 @@ using namespace cinekine;
 
 #include "ResolveCorrespondence.h"
 
+using namespace std;
+
+
 QPair<QVector3D,QMatrix4x4> ExploreProcess::defaultCamera(double zoomFactor, int width, int height)
 {
     // Camera target and initial position

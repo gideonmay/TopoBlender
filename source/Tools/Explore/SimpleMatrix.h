@@ -111,7 +111,8 @@ namespace smat
 		if(v1>v2) return v1;
 		else return v2;
 	}
-	
+
+#if 0
 	template<class T>
 	void swap(T &v1, T &v2)
 	{
@@ -119,6 +120,7 @@ namespace smat
 		v1=v2;
 		v2=v3;
 	}
+#endif
 	
 	template<class T>
 	double sign(T v)
@@ -629,7 +631,7 @@ namespace smat
 				s+= (v[i][j]-m)*(v[i][j]-m);
 			}
 		}
-		s=s/rows_/columns;
+		s=s /rows_ /columns_;
 		return sqrt(s);
 	}
 	

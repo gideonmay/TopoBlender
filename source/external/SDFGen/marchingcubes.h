@@ -5,7 +5,7 @@
 #include <vector>
 #include <utility>
 #include <cmath>
-#include <omp.h>
+// #include <omp.h>
 
 #define MC_VOLUME_PADDING 10
 
@@ -379,7 +379,8 @@ inline std::vector< std::vector<Point3f> > march( const ScalarVolume & volume, d
 
 	std::vector< std::vector<Point3f> > allTriangles;
 
-	std::vector< std::vector< std::vector<Point3f> > > trianglesThread( omp_get_max_threads() );
+	// std::vector< std::vector< std::vector<Point3f> > > trianglesThread( omp_get_max_threads() );
+	std::vector< std::vector< std::vector<Point3f> > > trianglesThread( 1 );
 
 	#pragma omp parallel for
 	for( int z = 0 ; z < sz - 1 ; ++z ) {
@@ -419,7 +420,8 @@ inline std::vector< std::vector<Point3f> > march( const ScalarVolume & volume, d
 					triangle.push_back( pnts[i * 3 + 1] );
 					triangle.push_back( pnts[i * 3 + 0] );
 
-					trianglesThread[ omp_get_thread_num() ].push_back( triangle );
+					// trianglesThread[ omp_get_thread_num() ].push_back( triangle );
+					trianglesThread[ 0 ].push_back( triangle );
 				}
 			}
 		}

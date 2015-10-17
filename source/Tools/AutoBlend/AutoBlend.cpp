@@ -21,7 +21,7 @@
 
 #include "ResolveCorrespondence.h"
 
-auto toBasicMesh = [&](opengp::SurfaceMesh::SurfaceMeshModel * m, QColor color){
+auto toBasicMesh = [](opengp::SurfaceMesh::SurfaceMeshModel * m, QColor color){
 	Thumbnail::QBasicMesh mesh;
 	m->update_face_normals();
 	for (auto f : m->faces()){

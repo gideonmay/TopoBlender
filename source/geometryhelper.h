@@ -213,10 +213,10 @@ inline void meregeVertices(Mesh * m){
 	std::vector<size_t> xrefs;
 	weld(vertices, xrefs, std::hash_Vector3<Vector3>(), [&](const Vector3& a, const Vector3& b){ return a.isApprox(b); });
 
-	std::vector< std::vector<Mesh::Vertex> > faces;
+	std::vector< std::vector<typename Mesh::Vertex> > faces;
 	for (auto f : m->faces()){
-		std::vector<Mesh::Vertex> face;
-		for (auto v : m->vertices(f)) face.push_back(Mesh::Vertex(xrefs[v.idx()]));
+		std::vector<typename Mesh::Vertex> face;
+		for (auto v : m->vertices(f)) face.push_back(typename Mesh::Vertex(xrefs[v.idx()]));
 		faces.push_back(face);
 	}
 
