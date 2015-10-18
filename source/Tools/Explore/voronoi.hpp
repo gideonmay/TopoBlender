@@ -1730,7 +1730,7 @@ namespace cinekine
     // 
     bool Graph::prepareHalfEdgesForCell(int32_t cell)
     {
-        if (cell >= _cells.size())
+        if (cell >= (int32_t) _cells.size())
             return false;
 
         HalfEdges& halfEdges = _cells[cell].halfEdges;
